@@ -64,7 +64,7 @@ bool run(unsigned thread_count) {
 		run();
 	else {
 		water::vector<water::threads::join_t> threads;
-		int at = 0;
+		unsigned at = 0;
 		while(water::threads::run(run, *threads.push_back({})) && ++at != thread_count)
 			;
 		if(!at) {

@@ -8,14 +8,16 @@ namespace me {
 struct test_test_1 {
 	bool operator()() {
 		//trace() << "test_test_1";
-		___water_test(true);
+		bool a = true; // avoid warning C4127: conditional expression is constant
+		___water_test(a);
 		return false;
 		}
 	};
 
 int test_test_2() {
 	//trace() << "test_test_2";
-	___water_test(true);
+	bool a = true;
+	___water_test(a);
 	return 0;
 	}
 
@@ -25,7 +27,8 @@ namespace {
 		test_test_2,
 		[] {
 			//trace() << "test_test_3";
-			___water_test(true);
+			bool a = true;
+			___water_test(a);
 			}
 		);
 	}

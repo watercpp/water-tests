@@ -4,11 +4,13 @@
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
 #ifndef ME_BASE_HPP
 #define ME_BASE_HPP
-#define WATER_DEBUG
+#if defined(DEBUG) || defined(_DEBUG)
+	#define WATER_DEBUG
+#endif
 #define WATER_TEST_FAILED(file, line, function, code) \
 	::water::trace() << "___water_test failed " << file << ':' << line << ' ' << function << ' ' << code; \
 	___water_breakpoint(); \
-	::water::throw_if<::me::exception>(); // aborts if exceptions are disabled
+	::water::throw_if< ::me::exception>(); // aborts if exceptions are disabled
 #include <water/water.hpp>
 #include <water/test.hpp>
 #include <water/trace.hpp>
