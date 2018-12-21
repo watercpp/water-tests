@@ -7,7 +7,7 @@
 namespace me {
 namespace {
 	auto x = add(
-		[]{ water::unicode::tests::all{}; }
+		[]{ water::unicode::tests::all(); }
 		);
 	}
 }

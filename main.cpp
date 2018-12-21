@@ -4,7 +4,7 @@
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
 #include "me/base.hpp"
 
-char const *test_args[] = {
+char const *const test_args[] = {
 	"application",
 	"--threads",
 	"-12"
