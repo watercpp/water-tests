@@ -6,8 +6,8 @@
 #include <water/temporary/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::temporary::tests::all
-		);
-	}
+    auto x = add(
+        water::temporary::tests::all
+    );
+}
 }

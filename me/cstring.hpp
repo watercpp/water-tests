@@ -7,41 +7,47 @@
 namespace me {
 
 class cstring {
-	char const
-		*mybegin = 0,
-		*myend = 0;
-	public:
-		cstring() = default;
-		explicit cstring(char const *a) :
-			mybegin{a},
-			myend{a}
-			{
-			if(myend && *myend)
-				while(*++myend)
-					;
-			}
-		char const* begin() const {
-			return mybegin;
-			}
-		char const* end() const {
-			return myend;
-			}
-	};
+
+    char const
+        *mybegin = 0,
+        *myend = 0;
+
+    public:
+
+        cstring() = default;
+
+        explicit cstring(char const *a) :
+            mybegin{a},
+            myend{a}
+        {
+            if(myend && *myend)
+                while(*++myend)
+                    ;
+        }
+        
+        char const* begin() const {
+            return mybegin;
+        }
+        
+        char const* end() const {
+            return myend;
+        }
+};
 
 inline bool operator==(cstring a, cstring b) {
-	if(a.end() - a.begin() != b.end() - b.begin())
-		return false;
-	auto
-		ai = a.begin(),
-		bi = b.begin();
-	while(ai != a.end() && *ai == *bi++)
-		++ai;
-	return ai == a.end();
-	}
+    if(a.end() - a.begin() != b.end() - b.begin())
+        return false;
+    auto
+        ai = a.begin(),
+        bi = b.begin();
+    while(ai != a.end() && *ai == *bi++)
+        ++ai;
+    return ai == a.end();
+}
 
 inline bool operator!=(cstring a, cstring b) {
-	return !(a == b);
-	}
+    return !(a == b);
+}
 
 }
 #endif

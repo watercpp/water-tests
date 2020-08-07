@@ -6,8 +6,8 @@
 #include <water/tests/no_numeric_limits_vs_std.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::tests::no_numeric_limits_vs_std
-		);
-	}
+    auto x = add(
+        water::tests::no_numeric_limits_vs_std
+    );
+}
 }

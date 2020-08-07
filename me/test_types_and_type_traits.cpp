@@ -7,7 +7,7 @@
 #include <water/types/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		);
-	}
+    auto x = add(
+    );
+}
 }

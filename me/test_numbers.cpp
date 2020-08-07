@@ -6,8 +6,8 @@
 #include <water/numbers/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::numbers::tests::all
-		);
-	}
+    auto x = add(
+        water::numbers::tests::all
+    );
+}
 }

@@ -6,8 +6,8 @@
 #include <water/tests/vectors/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::tests::vectors::all
-		);
-	}
+    auto x = add(
+        water::tests::vectors::all
+    );
+}
 }

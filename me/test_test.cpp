@@ -6,30 +6,30 @@
 namespace me {
 
 struct test_test_1 {
-	bool operator()() {
-		//trace() << "test_test_1";
-		bool a = true; // avoid warning C4127: conditional expression is constant
-		___water_test(a);
-		return false;
-		}
-	};
+    bool operator()() {
+        //trace() << "test_test_1";
+        bool a = true; // avoid warning C4127: conditional expression is constant
+        ___water_test(a);
+        return false;
+    }
+};
 
 int test_test_2() {
-	//trace() << "test_test_2";
-	bool a = true;
-	___water_test(a);
-	return 0;
-	}
+    //trace() << "test_test_2";
+    bool a = true;
+    ___water_test(a);
+    return 0;
+}
 
 namespace {
-	auto x = add(
-		test_test_1{},
-		test_test_2,
-		[] {
-			//trace() << "test_test_3";
-			bool a = true;
-			___water_test(a);
-			}
-		);
-	}
+    auto x = add(
+        test_test_1{},
+        test_test_2,
+        [] {
+            //trace() << "test_test_3";
+            bool a = true;
+            ___water_test(a);
+        }
+    );
+}
 }

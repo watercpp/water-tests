@@ -6,8 +6,8 @@
 #include <water/threads/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::threads::tests::all
-		);
-	}
+    auto x = add(
+        water::threads::tests::all
+    );
+}
 }

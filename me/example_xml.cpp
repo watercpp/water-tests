@@ -8,19 +8,19 @@
 #include <water/xml/examples/writing_to_text.hpp>
 namespace me {
 namespace {
-	auto x = add([]{
-		namespace examples = water::xml::examples;
-		water::vector<char> text;
-		
-		text = examples::basic::example();
-		___water_test(!text.empty());
-		
-		___water_test(examples::reading_from_text::basic1());
-		___water_test(examples::reading_from_text::basic2());
-		___water_test(examples::reading_from_text::parse_in_place());
-		___water_test(examples::writing_to_text::example1());
-		___water_test(examples::writing_to_text::example2());
-		
-		});
-	}
+    auto x = add([]{
+        namespace examples = water::xml::examples;
+        water::vector<char> text;
+        
+        text = examples::basic::example();
+        ___water_test(!text.empty());
+        
+        ___water_test(examples::reading_from_text::basic1());
+        ___water_test(examples::reading_from_text::basic2());
+        ___water_test(examples::reading_from_text::parse_in_place());
+        ___water_test(examples::writing_to_text::example1());
+        ___water_test(examples::writing_to_text::example2());
+        
+    });
+}
 }

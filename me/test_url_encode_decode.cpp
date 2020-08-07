@@ -6,8 +6,8 @@
 #include <water/tests/url_encode_decode.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::tests::url_encode_decode_all
-		);
-	}
+    auto x = add(
+        water::tests::url_encode_decode_all
+    );
+}
 }

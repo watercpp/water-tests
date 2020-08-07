@@ -6,8 +6,8 @@
 #include <water/unicode/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		[]{ water::unicode::tests::all(); }
-		);
-	}
+    auto x = add(
+        []{ water::unicode::tests::all(); }
+    );
+}
 }

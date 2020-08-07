@@ -6,8 +6,8 @@
 #include <water/base64/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::base64::tests::all
-		);
-	}
+    auto x = add(
+        water::base64::tests::all
+    );
+}
 }

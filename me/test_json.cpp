@@ -6,8 +6,8 @@
 #include <water/json/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::json::tests::all
-		);
-	}
+    auto x = add(
+        water::json::tests::all
+    );
+}
 }

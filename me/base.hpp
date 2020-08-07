@@ -5,12 +5,12 @@
 #ifndef ME_BASE_HPP
 #define ME_BASE_HPP
 #if defined(DEBUG) || defined(_DEBUG)
-	#define WATER_DEBUG
+    #define WATER_DEBUG
 #endif
 #define WATER_TEST_FAILED(file, line, function, code) \
-	::water::trace() << "___water_test failed " << file << ':' << line << ' ' << function << ' ' << code; \
-	___water_breakpoint(); \
-	::water::throw_if< ::me::exception>(); // aborts if exceptions are disabled
+    ::water::trace() << "___water_test failed " << file << ':' << line << ' ' << function << ' ' << code; \
+    ___water_breakpoint(); \
+    ::water::throw_if< ::me::exception>(); // aborts if exceptions are disabled
 #include <water/water.hpp>
 #include <water/test.hpp>
 #include <water/trace.hpp>
@@ -32,13 +32,14 @@ void add(function&&);
 struct add_return {};
 
 inline add_return add() {
-	return {};
-	}	
+    return {};
+}
+
 template<typename function_, typename ...list_> add_return add(function_&& a, list_&&... list) {
-	add(function{static_cast<function_&&>(a)});
-	add(static_cast<list_&&>(list)...);
-	return {};
-	}
+    add(function{static_cast<function_&&>(a)});
+    add(static_cast<list_&&>(list)...);
+    return {};
+}
 
 // run runs everything added to add
 

@@ -6,8 +6,8 @@
 #include <water/tests/allocator.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::tests::allocator_all
-		);
-	}
+    auto x = add(
+        water::tests::allocator_all
+    );
+}
 }

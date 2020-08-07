@@ -6,8 +6,8 @@
 #include <water/tests/ascii.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::tests::ascii_all
-		);
-	}
+    auto x = add(
+        water::tests::ascii_all
+    );
+}
 }

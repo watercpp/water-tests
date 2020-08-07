@@ -6,7 +6,7 @@
 #include <water/tests/iterator.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		);
-	}
+    auto x = add(
+    );
+}
 }

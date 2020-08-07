@@ -6,8 +6,8 @@
 #include <water/xml/tests/all.hpp>
 namespace me {
 namespace {
-	auto x = add(
-		water::xml::tests::all
-		);
-	}
+    auto x = add(
+        water::xml::tests::all
+    );
+}
 }
