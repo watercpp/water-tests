@@ -1,4 +1,4 @@
-// Copyright 2018 Johan Paulsson
+// Copyright 2018-2023 Johan Paulsson
 // This file is part of the Water C++ Library. It is licensed under the MIT License.
 // See the license.txt file in this distribution or https://watercpp.com/license.txt
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
@@ -8,7 +8,7 @@
     #define WATER_DEBUG
 #endif
 #define WATER_TEST_FAILED(file, line, function, code) \
-    ::water::trace() << "___water_test failed " << file << ':' << line << ' ' << function << ' ' << code; \
+    ::me::trace_test_failed(file, line, function, code); \
     ___water_breakpoint(); \
     ::water::throw_if< ::me::exception>(); // aborts if exceptions are disabled
 #include <water/water.hpp>
@@ -18,6 +18,8 @@
 //#include <water/tests/mess.hpp>
 #include "function.hpp"
 namespace me {
+
+void trace_test_failed(char const* file, unsigned line, char const* function, char const* code);
 
 using water::trace;
 using water::size_t;
@@ -44,7 +46,6 @@ template<typename function_, typename ...list_> add_return add(function_&& a, li
 // run runs everything added to add
 
 bool run(unsigned thread_count = 0);
-bool run(char const*const* begin, char const*const* end);
 
 }
 #endif

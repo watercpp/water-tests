@@ -1,4 +1,4 @@
-// Copyright 2018-2022 Johan Paulsson
+// Copyright 2018-2023 Johan Paulsson
 // This file is part of the Water C++ Library. It is licensed under the MIT License.
 // See the license.txt file in this distribution or https://watercpp.com/license.txt
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
@@ -7,8 +7,16 @@
 #include <water/numbers/read.hpp>
 #include <water/threads/thread.hpp>
 #include <water/vector.hpp>
-#include "cstring.hpp"
 namespace me {
+
+
+unsigned constexpr thread_count_default = 8;
+
+
+void trace_test_failed(char const* file, unsigned line, char const* function, char const* code) {
+    trace << "___water_test failed " << water::xtr::size<1024> << file << ':' << line << ' ' << function << ' ' << code;
+}
+
 
 class function_list {
     
@@ -40,6 +48,7 @@ void add(function&& f) {
     return functions.add(static_cast<function&&>(f));
 }
 
+
 class run_functions {
     
     water::atomic<bool> myerror{};
@@ -66,13 +75,14 @@ class run_functions {
         }
 };
 
+
 bool run(unsigned thread_count) {
     run_functions run;
     if(!thread_count)
-        thread_count = 8;
+        thread_count = thread_count_default;
     if(thread_count > functions.size())
         thread_count = static_cast<unsigned>(functions.size());
-    if(!thread_count)
+    if(thread_count <= 1)
         run();
     else {
         water::vector<water::threads::join_t> threads;
@@ -80,38 +90,19 @@ bool run(unsigned thread_count) {
         while(water::threads::run(run, *threads.push_back({})) && ++at != thread_count)
             ;
         if(!at) {
-            trace() << "error: could not start any threads";
+            trace << "error: could not start any threads";
             return false;
         }
         while(at)
             join(threads[--at]);
     }
     if(run.error()) {
-        trace() << "failed :(";
+        trace << "failed :(";
         return false;
     }
-    trace() << "success :)";
+    trace << "success :)";
     return true;
 }
 
-bool run(char const*const* b, char const*const* e) {
-    // --threads 123
-    unsigned thread_count = 0;
-    if(e - b == 3 && cstring(b[1]) == cstring("--threads")) {
-        cstring number(b[2]);
-        water::numbers::read<unsigned> read{water::numbers::settings{}.base(10)};
-        auto end = read(number.begin(), number.end());
-        thread_count = read;
-        if(end != number.end() || read.any_problem() || !thread_count) {
-            trace() << "error: cannot understand the number of threads";
-            return false;
-        }
-    }
-    else if(e - b != 1) {
-        trace() << "error: command line arguments can be --threads 8 or nothing";
-        return false;
-    }
-    return run(thread_count);
-}
 
 }
