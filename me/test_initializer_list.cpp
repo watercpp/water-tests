@@ -7,6 +7,7 @@
 namespace me {
 namespace {
     auto x = add(
+        water::tests::no_initializer_list_all
     );
 }
 }
