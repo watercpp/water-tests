@@ -21,11 +21,20 @@ void trace_test_failed(char const* file, unsigned line, char const* function, ch
 class function_list {
     
     water::vector<function> my;
+    bool mysolo = false;
     water::atomic<size_t> myat{};
     
     public:
     
         void add(function&& f) {
+            if(!mysolo)
+                my.emplace_back(static_cast<function&&>(f));
+        }
+        
+        void solo(function&& f) {
+            if(!mysolo)
+                my.clear();
+            mysolo = true;
             my.emplace_back(static_cast<function&&>(f));
         }
         
@@ -39,6 +48,10 @@ class function_list {
         size_t size() const {
             return my.size();
         }
+        
+        bool solo() const {
+            return mysolo;
+        }
 
 };
 static function_list functions;
@@ -46,6 +59,10 @@ static function_list functions;
 
 void add(function&& f) {
     return functions.add(static_cast<function&&>(f));
+}
+
+void solo(function&& f) {
+    return functions.solo(static_cast<function&&>(f));
 }
 
 
@@ -101,6 +118,8 @@ bool run(unsigned thread_count) {
         return false;
     }
     trace << "success :)";
+    if(functions.solo())
+        trace << "solo mode! all tests did not run!";
     return true;
 }
 

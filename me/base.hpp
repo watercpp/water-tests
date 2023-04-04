@@ -37,9 +37,26 @@ inline add_return add() {
     return {};
 }
 
-template<typename function_, typename ...list_> add_return add(function_&& a, list_&&... list) {
+template<typename function_, typename ...list_>
+add_return add(function_&& a, list_&&... list) {
     add(function{static_cast<function_&&>(a)});
     add(static_cast<list_&&>(list)...);
+    return {};
+}
+
+// solo is used instead of add to run just the soloed tests, ignoring those added with plain add
+
+void solo(function&&);
+
+inline add_return solo() {
+    return {};
+}
+
+template<typename function_, typename ...list_>
+[[deprecated("change solo to add to run all tests!")]]
+add_return solo(function_&& a, list_&&... list) {
+    solo(function{static_cast<function_&&>(a)});
+    solo(static_cast<list_&&>(list)...);
     return {};
 }
 
