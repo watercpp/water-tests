@@ -1,4 +1,4 @@
-// Copyright 2018 Johan Paulsson
+// Copyright 2018-2023 Johan Paulsson
 // This file is part of the Water C++ Library. It is licensed under the MIT License.
 // See the license.txt file in this distribution or https://watercpp.com/license.txt
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
@@ -9,7 +9,8 @@
 #include <water/swap.hpp>
 #include <water/later.hpp>
 #include <water/new_here.hpp>
-#include <water/types/types.hpp>
+#include <water/types.hpp>
+#include <water/is_no_to.hpp>
 namespace me {
 
 class function {
@@ -40,13 +41,13 @@ class function {
         }
         
         template<typename function_> explicit function(function_&& a) {
-            using no_reference = water::types::no_reference<function_>;
+            using no_reference = water::no_reference<function_>;
             // change reference to function into pointer
-            using type = typename water::types::ifel_type<
-                water::types::is_function<no_reference>,
-                water::types::to_pointer<no_reference>,
+            using type = water::ifel<
+                water::is_function<no_reference>,
+                water::to_pointer<no_reference>,
                 no_reference
-            >::result;
+            >;
             auto p = water::allocator{}.template allocate<type>();
             auto free = water::later([p]{ water::allocator{}.template free<type>(p); });
             my = new(water::here(p)) type{a};
