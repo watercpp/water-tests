@@ -11,6 +11,7 @@
 
 //#define WATER_NO_STD
 //#define WATER_NO_WINDOWS_H
+//#define WATER_USE_WATER_THREADS
 
 #define WATER_TEST_FAILED(file, line, function, code) \
     ::me::trace_test_failed(file, line, function, code); \

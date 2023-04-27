@@ -4,6 +4,7 @@
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
 #include "base.hpp"
 #include <water/tests/begin_end.hpp>
+#include <water/tests/size_from.hpp> // not begin_end but kind of related
 namespace me {
 namespace {
     auto x = add(
