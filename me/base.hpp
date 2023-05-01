@@ -18,6 +18,10 @@
     ___water_breakpoint(); \
     ::water::throw_if< ::me::exception>(); // aborts if exceptions are disabled
 
+#ifdef WATER_TESTS_INCLUDE
+    #include WATER_TESTS_INCLUDE
+#endif
+
 #include <water/water.hpp>
 #include <water/test.hpp>
 #include <water/trace.hpp>
