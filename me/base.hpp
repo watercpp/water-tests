@@ -1,4 +1,4 @@
-// Copyright 2018-2023 Johan Paulsson
+// Copyright 2018-2025 Johan Paulsson
 // This file is part of the Water C++ Library. It is licensed under the MIT License.
 // See the license.txt file in this distribution or https://watercpp.com/license.txt
 //\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_
@@ -22,11 +22,13 @@
     #include WATER_TESTS_INCLUDE
 #endif
 
+//#define WATER_TESTS_MESS_MIN_MAX
+#include <water/tests/mess.hpp>
+
 #include <water/water.hpp>
 #include <water/test.hpp>
 #include <water/trace.hpp>
 #include <water/throw_if.hpp>
-//#include <water/tests/mess.hpp>
 #include "function.hpp"
 namespace me {
 
